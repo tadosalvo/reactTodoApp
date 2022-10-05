@@ -4,6 +4,8 @@ import CreateTodo from "./todo/CreateTodo";
 import { useReducer } from "react";
 import appReducer from "./reducers";
 
+import { v4 as uuidv4 } from "uuid";
+
 function App() {
   const initialTodos = [
     {
@@ -13,6 +15,7 @@ function App() {
       complete: false,
       dateCreated: "Date Created",
       dateCompleted: "Date Completed",
+      id: uuidv4(),
     },
   ];
 

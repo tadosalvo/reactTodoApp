@@ -16,9 +16,9 @@ export default function Todo({
       <div>
         <input
           type="checkbox"
-          defaultChecked={complete}
+          defaultChecked={false}
           value={complete}
-          onChange={(event) =>
+          onChange={(event) => {
             dispatch({
               type: "COMPLETED_TODO",
               title,
@@ -29,8 +29,8 @@ export default function Todo({
               author,
               id,
               complete: event.target.checked,
-            })
-          }
+            });
+          }}
         />
       </div>
       <br />

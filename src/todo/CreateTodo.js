@@ -9,17 +9,16 @@ export default function CreateTodo({ user, dispatch }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        {
-          title &&
-            dispatch({
-              type: "CREATE_TODO",
-              author: user,
-              title,
-              description,
-              dateCompleted: "Not completed",
-              id: uuidv4(),
-            });
-        }
+
+        title &&
+          dispatch({
+            type: "CREATE_TODO",
+            author: user,
+            title,
+            description,
+            dateCompleted: "Not completed",
+            id: uuidv4(),
+          });
 
         //setTodos([newTodo, ...todos]);
       }}
