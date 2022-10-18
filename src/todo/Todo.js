@@ -14,13 +14,14 @@ export default function Todo({
       <h3>{title}</h3>
       <div>{description}</div>
       <div>
+        Completed:
         <input
           type="checkbox"
           defaultChecked={false}
           value={complete}
           onChange={(event) => {
             dispatch({
-              type: "COMPLETED_TODO",
+              type: "TOGGLE_TODO",
               title,
               user,
               description,
@@ -30,6 +31,15 @@ export default function Todo({
               id,
               complete: event.target.checked,
             });
+          }}
+        />
+        Delete:
+        <input
+          type="submit"
+          value="Delete"
+          onClick={(event) => {
+            event.preventDefault();
+            dispatch({ type: "DELETE_TODO", id, user });
           }}
         />
       </div>
