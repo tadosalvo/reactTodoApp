@@ -1,0 +1,9 @@
+{
+  "posts": [
+    { "id": 1, "title": "portal", "content": "Some content", "author": "paul" }
+  ],
+  "users": [],
+  "themes": [
+    { "id": 1, "primaryColor": "deepskyblue", "secondaryColor": "coral" }
+  ]
+}

@@ -1,8 +1,12 @@
 import UserBar from "./user/UserBar";
 import TodoList from "./todo/TodoList";
 import CreateTodo from "./todo/CreateTodo";
-import { useReducer } from "react";
+import React, { useState, useEffect, useReducer } from "react";
+//import { useResource } from "react-request-hook";
 import appReducer from "./reducers";
+import Header from "./Header";
+import { ThemeContext } from "./contexts";
+import ChangeTheme from "./ChangeTheme";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -26,14 +30,50 @@ function App() {
     user: "",
     todos: initialTodos,
   });
+
+  const { user } = state;
+
+  useEffect(() => {
+    if (user) {
+      document.title = `${user}’s Todo`;
+    } else {
+      document.title = "Todo";
+    }
+  }, [user]);
+
+  const [theme, setTheme] = useState({
+    primaryColor: "deepskyblue",
+    secondaryColor: "coral",
+  });
+
+  // const [posts, getPosts] = useResource(() => ({
+  //   url: "/posts",
+  //   method: "get",
+  // }));
+
+  //useEffect(getPosts, []);
+
+  // useEffect(() => {
+  //   if (posts && posts.data) {
+  //     dispatch({ type: "FETCH_POSTS", posts: posts.data.reverse() });
+  //   }
+  // }, [posts]);
+
   return (
     <div>
-      <h1>Todo App</h1>
-      <UserBar user={state.user} dispatch={dispatch} />
-      <TodoList todos={state.todos} dispatch={dispatch} />
-      {state.user && (
-        <CreateTodo user={state.user} todos={state.todos} dispatch={dispatch} />
-      )}
+      <ThemeContext.Provider value={theme}>
+        <Header title="Todo App" />
+        <ChangeTheme theme={theme} setTheme={setTheme} />
+        <UserBar user={state.user} dispatch={dispatch} />
+        <TodoList todos={state.todos} dispatch={dispatch} />
+        {state.user && (
+          <CreateTodo
+            user={state.user}
+            todos={state.todos}
+            dispatch={dispatch}
+          />
+        )}
+      </ThemeContext.Provider>
     </div>
   );
 }

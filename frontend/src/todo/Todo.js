@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { ThemeContext } from "../contexts";
+
 export default function Todo({
   user,
   title,
@@ -9,9 +12,11 @@ export default function Todo({
   complete,
   dispatch,
 }) {
+  const { secondaryColor } = useContext(ThemeContext);
+
   return (
     <div>
-      <h3>{title}</h3>
+      <h3 style={{ color: secondaryColor }}>{title}</h3>
       <div>{description}</div>
       <div>
         Completed:
