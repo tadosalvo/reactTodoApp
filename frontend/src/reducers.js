@@ -14,6 +14,8 @@ function userReducer(state, action) {
 
 function todoReducer(state, action) {
   switch (action.type) {
+    case "FETCH_TODOS":
+      return action.todos;
     case "CREATE_TODO":
       const newTodo = {
         title: action.title,

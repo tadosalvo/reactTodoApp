@@ -2,7 +2,7 @@ import UserBar from "./user/UserBar";
 import TodoList from "./todo/TodoList";
 import CreateTodo from "./todo/CreateTodo";
 import React, { useState, useEffect, useReducer } from "react";
-//import { useResource } from "react-request-hook";
+import { useResource } from "react-request-hook";
 import appReducer from "./reducers";
 import Header from "./Header";
 import { ThemeContext, StateContext } from "./contexts";
@@ -11,17 +11,7 @@ import ChangeTheme from "./ChangeTheme";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const initialTodos = [
-    {
-      title: "Todo Example",
-      description: "Description",
-      author: "Logged in User",
-      complete: false,
-      dateCreated: "Date Created",
-      dateCompleted: "Date Completed",
-      id: uuidv4(),
-    },
-  ];
+  const initialTodos = [];
 
   //const [user, setUser] = useState("");
   //const [todos, setTodos] = useState(initialTodos);
@@ -46,18 +36,18 @@ function App() {
     secondaryColor: "coral",
   });
 
-  // const [posts, getPosts] = useResource(() => ({
-  //   url: "/posts",
-  //   method: "get",
-  // }));
+  const [todos, getTodos] = useResource(() => ({
+    url: "/todos",
+    method: "get",
+  }));
 
-  //useEffect(getPosts, []);
+  useEffect(getTodos, []);
 
-  // useEffect(() => {
-  //   if (posts && posts.data) {
-  //     dispatch({ type: "FETCH_POSTS", posts: posts.data.reverse() });
-  //   }
-  // }, [posts]);
+  useEffect(() => {
+    if (todos && todos.data) {
+      dispatch({ type: "FETCH_TODOS", todos: todos.data.reverse() });
+    }
+  }, [todos]);
 
   return (
     <div>

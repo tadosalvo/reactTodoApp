@@ -1,9 +1,41 @@
 {
-  "posts": [
-    { "id": 1, "title": "portal", "content": "Some content", "author": "paul" }
+  "todos": [
+    {
+      "id": 1,
+      "title": "portal",
+      "description": "Some content",
+      "author": "test author",
+      "dateCompleted": "Not complete",
+      "dateCreated": "",
+      "complete": false
+    },
+    {
+      "title": "test",
+      "description": "feed dog",
+      "author": "hallo",
+      "dateCompleted": "Not completed",
+      "dateCreated": "11/6/2022 16:46:45",
+      "complete": false,
+      "id": 2
+    }
   ],
-  "users": [],
+  "users": [
+    {
+      "email": "test@test.net",
+      "password": "$2a$10$sE3PQD/IASfJqo0n0EIhfuI20BAQ2.OYsRAbzGTNtxAjQmAVrvzJ6",
+      "id": 1
+    }
+  ],
   "themes": [
-    { "id": 1, "primaryColor": "deepskyblue", "secondaryColor": "coral" }
+    {
+      "id": 1,
+      "primaryColor": "deepskyblue",
+      "secondaryColor": "coral"
+    },
+    {
+      "id": 2,
+      "primaryColor": "red",
+      "secondaryColor": "blue"
+    }
   ]
 }
