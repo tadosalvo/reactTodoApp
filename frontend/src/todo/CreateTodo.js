@@ -7,6 +7,7 @@ import CalculateDate from "../CalculateDate";
 export default function CreateTodo() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [error, setError] = useState(false);
 
   const { state, dispatch } = useContext(StateContext);
   const { user } = state;
@@ -27,6 +28,10 @@ export default function CreateTodo() {
   );
 
   useEffect(() => {
+    if (todo?.error) {
+      setError(true);
+    }
+
     if (todo?.isLoading === false && todo?.data) {
       dispatch({
         type: "CREATE_TODO",
