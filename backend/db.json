@@ -8,15 +8,6 @@
       "dateCompleted": "11/6/2022 17:52:21",
       "dateCreated": "",
       "complete": true
-    },
-    {
-      "title": "test",
-      "description": "feed dog",
-      "author": "hallo",
-      "dateCompleted": "11/6/2022 17:54:21",
-      "dateCreated": "11/6/2022 16:46:45",
-      "complete": false,
-      "id": 2
     }
   ],
   "users": [
